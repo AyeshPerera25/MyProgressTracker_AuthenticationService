@@ -1,0 +1,6 @@
+@MyProgressTrackerAuthenticationService_HostAddress = http://localhost:5270
+
+GET {{MyProgressTrackerAuthenticationService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
