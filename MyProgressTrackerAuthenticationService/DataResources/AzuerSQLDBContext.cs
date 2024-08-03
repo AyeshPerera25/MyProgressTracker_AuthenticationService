@@ -7,6 +7,7 @@ namespace MyProgressTrackerAuthenticationService.DataResources
     {
         public AzuerSQLDBContext(DbContextOptions<AzuerSQLDBContext> options) : base(options)
         {
+
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Session> Sessions { get; set; }

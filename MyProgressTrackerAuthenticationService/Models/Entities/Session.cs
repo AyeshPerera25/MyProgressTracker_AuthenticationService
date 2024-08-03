@@ -8,9 +8,10 @@ namespace MyProgressTrackerAuthenticationService.Models.Entities
         {
         }
 
-        public Session(long sessionId, string userId, User user, DateTime lastLoginTime, bool loginStatus)
+        public Session(long sessionId, string sessionKey, long userId, User user, DateTime lastLoginTime, bool loginStatus)
         {
             SessionId = sessionId;
+            SessionKey = sessionKey;
             UserId = userId;
             User = user;
             LastLoginTime = lastLoginTime;
@@ -21,7 +22,9 @@ namespace MyProgressTrackerAuthenticationService.Models.Entities
         [Required]
         public long SessionId { get; set; }
         [Required]
-        public string UserId { get; set; }
+        public string SessionKey { get; set; }
+        [Required]
+        public long UserId { get; set; }
         [Required]
         public User User { get; set; }
         [Required]

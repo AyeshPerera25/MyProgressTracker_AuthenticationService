@@ -35,7 +35,7 @@ namespace MyProgressTrackerAuthenticationService.Services
             UserLoginRes response = null;
             try
             {
-               
+                response = _userLoginHandler.Login(request);
             }
             catch (Exception ex)
             {

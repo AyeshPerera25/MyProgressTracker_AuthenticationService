@@ -19,7 +19,7 @@ namespace MyProgressTrackerAuthenticationService.Handlers
             NewUserRegistrationRes response = null;
             User? user = null;
 
-            validateSignInModel(request);
+            validateNewUserRegistrationRequest(request);
             user = populateUser(request);
             persistUser(user);
 
@@ -48,12 +48,17 @@ namespace MyProgressTrackerAuthenticationService.Handlers
 
         private User populateUser(NewUserRegistrationReq request)
         {
-            DateTime localTime = DateTime.Now;
-            long id = long.Parse(localTime.ToString("yyyyMMddHHmmss"));
-            return new User(id, request.FirstName, request.LastName, request.Email, request.Password);
+            /*DateTime localTime = DateTime.Now;
+            long id = long.Parse(localTime.ToString("yyyyMMddHHmmss"));*/
+            User user = new User();
+            user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
+            user.Email = request.Email;
+            user.Password = request.Password;
+            return user;
         }
 
-        private void validateSignInModel(NewUserRegistrationReq request)
+        private void validateNewUserRegistrationRequest(NewUserRegistrationReq request)
         {
             User? user = null;
 

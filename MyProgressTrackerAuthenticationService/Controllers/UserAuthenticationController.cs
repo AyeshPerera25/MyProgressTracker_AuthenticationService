@@ -5,10 +5,10 @@ using MyProgressTrackerAuthenticationService.Services;
 
 namespace MyProgressTrackerAuthenticationService.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+	[ApiController]
+	[Route("api/[controller]")]
     public class UserAuthenticationController : Controller
-    {
+	{
         private SystemAuthenticationServiceCore _serviceCore;
 
         public UserAuthenticationController(SystemAuthenticationServiceCore serviceCore)
@@ -17,16 +17,36 @@ namespace MyProgressTrackerAuthenticationService.Controllers
         }
 
         [HttpPost("userRegister")]
-        public ActionResult<NewUserRegistrationRes> UserRegister(NewUserRegistrationReq request)
+        public ActionResult<NewUserRegistrationRes> UserRegister([FromBody] NewUserRegistrationReq request)
         {
             try 
             {
+                if (request == null)
+                {
+                    return BadRequest("Request is null");
+                }
                 return Ok(_serviceCore.UserRegistration(request));
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-        } 
+        }
+        [HttpPost("userLogin")]
+        public ActionResult<UserLoginRes> UserLogin([FromBody] UserLoginReq request)
+        {
+            try
+            {
+                if (request == null)
+                {
+                    return BadRequest("Request is null");
+                }
+                return Ok(_serviceCore.UserLogin(request));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
