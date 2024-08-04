@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyProgressTrackerAuthenticationService.Models.Entities;
+using MyProgressTrackerDependanciesLib.Models.Entities;
 
 namespace MyProgressTrackerAuthenticationService.DataResources
 {

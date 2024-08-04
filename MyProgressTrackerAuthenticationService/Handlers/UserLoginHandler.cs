@@ -1,7 +1,7 @@
 ﻿using Azure.Core;
 using MyProgressTrackerAuthenticationService.DataResources;
-using MyProgressTrackerAuthenticationService.Models.DataTransferObjects;
-using MyProgressTrackerAuthenticationService.Models.Entities;
+using MyProgressTrackerDependanciesLib.Models.DataTransferObjects;
+using MyProgressTrackerDependanciesLib.Models.Entities;
 
 namespace MyProgressTrackerAuthenticationService.Handlers
 {
