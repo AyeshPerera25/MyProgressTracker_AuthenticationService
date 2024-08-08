@@ -1,5 +1,5 @@
 ﻿using MyProgressTrackerAuthenticationService.Handlers;
-using MyProgressTrackerAuthenticationService.Models.DataTransferObjects;
+using MyProgressTrackerDependanciesLib.Models.DataTransferObjects;
 
 namespace MyProgressTrackerAuthenticationService.Services
 {
@@ -35,7 +35,7 @@ namespace MyProgressTrackerAuthenticationService.Services
             UserLoginRes response = null;
             try
             {
-               
+                response = _userLoginHandler.Login(request);
             }
             catch (Exception ex)
             {
