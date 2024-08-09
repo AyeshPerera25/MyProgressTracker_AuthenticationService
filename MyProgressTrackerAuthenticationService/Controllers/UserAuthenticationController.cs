@@ -20,7 +20,7 @@ namespace MyProgressTrackerAuthenticationService.Controllers
         public ActionResult<NewUserRegistrationRes> UserRegister([FromBody] NewUserRegistrationReq request)
         {
             try 
-            {
+            { 
                 if (request == null)
                 {
                     return BadRequest("Request is null");
