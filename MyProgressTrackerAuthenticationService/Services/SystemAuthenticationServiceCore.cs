@@ -45,5 +45,21 @@ namespace MyProgressTrackerAuthenticationService.Services
             }
             return response;
         }
+
+        public UserLogoutRes UserLogout(UserLogoutReq request)
+        {
+            UserLogoutRes response = null;
+            try
+            {
+                response = _userLoginHandler.Logout(request);
+            }
+            catch (Exception ex)
+            {
+                response = new UserLogoutRes();
+                response.IsRequestSuccess = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
     }
 }
