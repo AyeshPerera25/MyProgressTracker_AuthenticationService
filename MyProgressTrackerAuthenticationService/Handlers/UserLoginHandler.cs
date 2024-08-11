@@ -100,5 +100,49 @@ namespace MyProgressTrackerAuthenticationService.Handlers
 
             return user;
         }
+
+        public UserLogoutRes Logout(UserLogoutReq request)
+        {
+            UserLogoutRes response = null;
+            Session session = validateLogoutRequest(request);
+            session.LoginStatus = false;
+            persistLoginSession(session);
+
+            response = new UserLogoutRes();
+            response.IsRequestSuccess = true;
+            response.Description = "Success!";
+
+            return response;
+        }
+
+        private Session validateLogoutRequest(UserLogoutReq request)
+        {
+            Session? session = null;
+           
+
+            if (request == null)
+            {
+                throw new Exception("Logout Request is null!");
+            }
+            if (_dbContext.Sessions.Any())
+            {
+                session = _dbContext.Sessions.SingleOrDefault<Session>(session => session.SessionKey == request.SessionKey);
+                if (session == null)
+                {
+                    throw new Exception("Session not found for the userID: " + request.UserId);
+                }
+                if(!session.LoginStatus)
+                {
+                    throw new Exception("Session Status Inactivated!");
+                }
+        
+            }
+            else
+            {
+                throw new Exception("No any Login Session has registerd yet!");
+            }
+
+            return session;
+        }
     }
 }

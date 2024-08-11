@@ -48,5 +48,22 @@ namespace MyProgressTrackerAuthenticationService.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("userLogout")]
+        public ActionResult<UserLogoutRes> UserLogout([FromBody] UserLogoutReq request)
+        {
+            try
+            {
+                if (request == null)
+                {
+                    return BadRequest("Request is null");
+                }
+                return Ok(_serviceCore.UserLogout(request));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
